@@ -1,2 +1,3 @@
-# SigmariaFrontend
-Frontend for Sigmaria project, written in Vue.js 3
+# Fallen Empires
+
+Frontend for Fallen Empires project, written in Vue.js 3
