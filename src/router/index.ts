@@ -11,7 +11,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/foundry',
     name: 'Foundry',
-    component: Home
+    component: Home,
+    beforeEnter() {
+      window.open('http://vtt.fallenempires.eu:30000/join', '_blank');
+    }
   },
   {
     path: '/blog',
