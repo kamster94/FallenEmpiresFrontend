@@ -2,7 +2,7 @@
   <Menu as="div" class="relative inline-block text-left">
     <MenuButton>
       <router-link
-        :custom="item.subItems"
+        :custom="item.subItems != null"
         :to="item.route"
         v-slot="{ isActive }"
       >
