@@ -1,30 +1,45 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <app-header />
+  <div
+    class="mx-auto px-4 my-8 p-8 content border-solid border-2 border-red-900"
+  >
+    <router-view />
   </div>
-  <router-view />
+  <app-footer />
 </template>
 
+<script lang="ts">
+import { defineComponent } from 'vue';
+import AppHeader from '@/components/AppHeader.vue';
+import AppFooter from '@/components/AppFooter.vue';
+
+export default defineComponent({
+  name: 'LayoutDefault',
+
+  components: {
+    AppHeader,
+    AppFooter
+  }
+});
+</script>
+
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Eczar|Open+Sans|Teko');
+
+body {
+  background-color: #ededed;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.content {
+  background-image: url('./assets/images/background.png');
+  max-width: 1261px;
 }
 </style>
