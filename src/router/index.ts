@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
-import About from '../views/About.vue';
+import Foundry from '../views/Foundry.vue';
+import Error404 from '../views/Error404.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -11,7 +12,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/foundry',
     name: 'Foundry',
-    component: Home,
+    component: Foundry,
     beforeEnter() {
       window.open('http://vtt.fallenempires.eu:30000/join', '_blank');
     }
@@ -46,12 +47,16 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/setting',
     name: 'Setting',
-    component: About
+    component: Home
   },
   {
     path: '/misc',
     name: 'Misc',
     component: Home
+  },
+  {
+    path: '/:catchAll(.*)',
+    component: Error404
   }
 ];
 
