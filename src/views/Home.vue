@@ -1,4 +1,5 @@
 <template>
+  <common-title>Age of Fallen Empires</common-title>
   <div class="home grid grid-cols-1 md:grid-cols-3 gap-4">
     <common-box :content="box1" />
     <common-box :content="box2" />
@@ -9,11 +10,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import CommonBox, { CommonBoxProps } from '@/components/CommonBox.vue';
+import CommonTitle from '@/components/CommonTitle.vue';
 
 export default defineComponent({
   name: 'Home',
   components: {
-    CommonBox
+    CommonBox,
+    CommonTitle
   },
   data() {
     const box1: CommonBoxProps = {
