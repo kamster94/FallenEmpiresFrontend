@@ -11,6 +11,9 @@ import { faFlag } from '@fortawesome/free-solid-svg-icons';
 import { faBook } from '@fortawesome/free-solid-svg-icons';
 import { faGlobeAfrica } from '@fortawesome/free-solid-svg-icons';
 import { faChessRook } from '@fortawesome/free-solid-svg-icons';
+import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
+import { faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faBars);
 library.add(faTimes);
@@ -23,5 +26,8 @@ library.add(faFlag);
 library.add(faBook);
 library.add(faGlobeAfrica);
 library.add(faChessRook);
+library.add(faBookOpen);
+library.add(faUsers);
+library.add(faUserPlus);
 
 export default FontAwesomeIcon;
