@@ -2,6 +2,8 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
 import Foundry from '../views/Foundry.vue';
 import Error404 from '../views/Error404.vue';
+import Rules from '../views/Rules.vue';
+import Ancestries from '../views/Ancestries.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -30,7 +32,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/rules',
     name: 'Rules',
-    component: Home,
+    component: Rules,
     children: [
       {
         path: 'character-creation',
@@ -40,7 +42,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'ancestries',
         name: 'Ancestries',
-        component: Home
+        component: Ancestries
       }
     ]
   },
