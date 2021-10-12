@@ -9,7 +9,7 @@
                 <th
                   scope="col"
                   class="px-6 py-3"
-                  v-for="header in content.headers"
+                  v-for="header in table.headers"
                   :key="header.index"
                 >
                   {{ header }}
@@ -19,7 +19,7 @@
             <tbody class="bg-white divide-y divide-gray-200">
               <tr
                 class="whitespace-nowra"
-                v-for="row in content.rows"
+                v-for="row in table.rows"
                 :key="row.index"
               >
                 <td
@@ -28,14 +28,14 @@
                   :key="cell.index"
                 >
                   <div v-if="cell.text != null">
-                    <router-link v-if="cell.route != null" :to="cell.route">{{
-                      cell.text
-                    }}</router-link>
-                    <span v-else>{{ cell.text }}</span>
+                    <common-link
+                      :label="cell.text.label"
+                      :route="cell.text.route"
+                    />
                   </div>
                   <ul v-if="cell.list != null">
                     <li v-for="item in cell.list" :key="item.index">
-                      <common-link :item="item" />
+                      <common-link :label="item.label" :route="item.route" />
                     </li>
                   </ul>
                   <div v-if="cell.tags != null">
@@ -55,31 +55,17 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import CommonLink, { CommonLinkProps } from '@/components/CommonLink.vue';
+import CommonLink from '@/components/CommonLink.vue';
 import CommonTag from './CommonTag.vue';
-
-interface Cell {
-  text?: string;
-  route?: string;
-  list?: CommonLinkProps[];
-  tags?: string[];
-}
-
-interface Row {
-  cells: Cell[];
-}
-
-export interface CommonTableProps {
-  headers: string[];
-  rows: Row[];
-}
+import Table from '@/models/Table';
 
 export default defineComponent({
   components: { CommonLink, CommonTag },
   name: 'CommonTable',
   props: {
-    content: {
-      type: Object as PropType<CommonTableProps>
+    table: {
+      type: Object as PropType<Table>,
+      required: true
     }
   }
 });

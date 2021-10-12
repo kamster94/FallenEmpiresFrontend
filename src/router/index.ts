@@ -4,6 +4,7 @@ import Foundry from '../views/Foundry.vue';
 import Error404 from '../views/Error404.vue';
 import Rules from '../views/Rules.vue';
 import Ancestries from '../views/Ancestries.vue';
+import Ancestry from '../views/Ancestry.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -42,7 +43,14 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'ancestries',
         name: 'Ancestries',
-        component: Ancestries
+        component: Ancestries,
+        children: [
+          {
+            path: ':name',
+            name: 'Ancestry',
+            component: Ancestry
+          }
+        ]
       }
     ]
   },
@@ -58,6 +66,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/:catchAll(.*)',
+    name: 'Notfound',
     component: Error404
   }
 ];

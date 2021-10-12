@@ -42,4 +42,8 @@ body {
   background-image: url('./assets/images/background.png');
   max-width: 1261px;
 }
+
+.box-title {
+  font-family: 'Teko', sans-serif;
+}
 </style>

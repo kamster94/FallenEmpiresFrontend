@@ -1,17 +1,21 @@
 <template>
   <common-title>Age of Fallen Empires</common-title>
   <div class="home grid grid-cols-1 md:grid-cols-3 gap-4">
-    <common-box :content="box1" />
-    <common-box :content="box2" />
-    <common-box :content="box3" />
+    <common-box
+      v-for="box in boxes"
+      v-bind:key="box.index"
+      :title="box.title"
+      :icon="box.icon"
+      :items="box.items"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import CommonBox, { CommonBoxProps } from '@/components/CommonBox.vue';
+import CommonBox from '@/components/CommonBox.vue';
 import CommonTitle from '@/components/CommonTitle.vue';
-
+import HomeBox from '@/models/HomeBox';
 export default defineComponent({
   name: 'Home',
   components: {
@@ -19,34 +23,14 @@ export default defineComponent({
     CommonTitle
   },
   data() {
-    const box1: CommonBoxProps = {
-      title: 'Start here',
-      icon: 'book-open',
-      items: [
-        { label: 'Setting Foundations', route: '/' },
-        { label: 'Planned Campaigns', route: '/' },
-        { label: 'Character Creation', route: '/' },
-        { label: 'Homebrew', route: '/' }
-      ]
-    };
-    const box2: CommonBoxProps = {
-      title: 'Primary ancestries',
-      icon: 'users',
-      items: [
-        { label: 'Human', route: '/' },
-        { label: 'Dwarf', route: '/' },
-        { label: 'Elf', route: '/' }
-      ]
-    };
-    const box3: CommonBoxProps = {
-      title: 'Secondary ancestries',
-      icon: 'user-plus'
-    };
     return {
-      box1,
-      box2,
-      box3
+      boxes: [] as HomeBox[]
     };
+  },
+  beforeMount() {
+    this.axios.get(`http://localhost:3000/homeBoxes/`).then((response) => {
+      this.boxes = response.data;
+    });
   }
 });
 </script>

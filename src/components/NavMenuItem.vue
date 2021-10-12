@@ -1,27 +1,23 @@
 <template>
   <Menu as="div" class="relative inline-block text-left">
     <MenuButton>
-      <router-link
-        :custom="item.subItems != null"
-        :to="item.route"
-        v-slot="{ isActive }"
-      >
+      <router-link :custom="subItems != null" :to="route" v-slot="{ isActive }">
         <span
           class="block px-3 py-2 rounded-md text-white"
           :class="[
             isActive
               ? 'text-opacity-100 text-white'
               : 'text-opacity-60 text-white hover:text-opacity-80',
-            item.subItems ? 'dropdown-toggle' : ''
+            subItems ? 'dropdown-toggle' : ''
           ]"
         >
-          <font-awesome-icon :icon="item.icon" />
-          {{ item.label }}
+          <font-awesome-icon :icon="icon" />
+          {{ label }}
         </span>
       </router-link>
     </MenuButton>
     <MenuItems
-      v-if="item.subItems"
+      v-if="subItems != null"
       class="
         origin-top-right
         absolute
@@ -37,9 +33,10 @@
     >
       <div class="py-1">
         <nav-menu-item-sub
-          v-for="subItem in item.subItems"
+          v-for="subItem in subItems"
           :key="subItem.caption"
-          :item="subItem"
+          :label="subItem.label"
+          :route="subItem.route"
         />
       </div>
     </MenuItems>
@@ -49,16 +46,8 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import { MenuButton, MenuItems, Menu } from '@headlessui/vue';
-import NavMenuItemSub, {
-  NavMenuItemSubProps
-} from '@/components/NavMenuItemSub.vue';
-
-export interface NavMenuItemProps {
-  label: string;
-  route: string;
-  icon: string;
-  subItems?: NavMenuItemSubProps[];
-}
+import NavMenuItemSub from '@/components/NavMenuItemSub.vue';
+import Navigation from '@/models/Navigation';
 
 export default defineComponent({
   name: 'NavMenuItem',
@@ -69,9 +58,21 @@ export default defineComponent({
     NavMenuItemSub
   },
   props: {
-    item: {
-      type: Object as PropType<NavMenuItemProps>,
+    label: {
+      type: String,
       required: true
+    },
+    route: {
+      type: String,
+      required: true
+    },
+    icon: {
+      type: String,
+      required: true
+    },
+    subItems: {
+      type: Array as PropType<Navigation[]>,
+      required: false
     }
   }
 });

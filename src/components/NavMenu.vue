@@ -4,7 +4,10 @@
       <nav-menu-item
         v-for="item in menuItems"
         :key="item.caption"
-        :item="item"
+        :label="item.label"
+        :route="item.route"
+        :icon="item.icon"
+        :subItems="item.subItems"
       />
     </div>
   </div>
@@ -12,7 +15,8 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import NavMenuItem, { NavMenuItemProps } from '@/components/NavMenuItem.vue';
+import NavMenuItem from '@/components/NavMenuItem.vue';
+import Navigation from '@/models/Navigation';
 
 export default defineComponent({
   name: 'NavMenu',
@@ -21,7 +25,7 @@ export default defineComponent({
   },
   props: {
     menuItems: {
-      type: Array as PropType<NavMenuItemProps[]>,
+      type: Object as PropType<Navigation>,
       required: true
     }
   }

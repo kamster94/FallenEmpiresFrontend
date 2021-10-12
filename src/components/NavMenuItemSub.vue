@@ -1,6 +1,6 @@
 <template>
   <MenuItem v-slot="{ active }">
-    <router-link :to="item.route" v-slot="{ isActive }">
+    <router-link :to="route" v-slot="{ isActive }">
       <span
         class="
           text-gray-300
@@ -16,20 +16,15 @@
           isActive ? 'bg-gray-300' : ''
         ]"
       >
-        {{ item.label }}
+        {{ label }}
       </span>
     </router-link>
   </MenuItem>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent } from 'vue';
 import { MenuItem } from '@headlessui/vue';
-
-export interface NavMenuItemSubProps {
-  label: string;
-  route: string;
-}
 
 export default defineComponent({
   name: 'NavMenuItemSub',
@@ -37,8 +32,12 @@ export default defineComponent({
     MenuItem
   },
   props: {
-    item: {
-      type: Object as PropType<NavMenuItemSubProps>,
+    label: {
+      type: String,
+      required: true
+    },
+    route: {
+      type: String,
       required: true
     }
   }
