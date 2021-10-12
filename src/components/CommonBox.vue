@@ -1,13 +1,13 @@
 <template>
   <div class="box-border border border-red-900 rounded-md bg-white box">
-    <div class="title p-2 bg-gray-100 text-red-900">
-      <font-awesome-icon :icon="content.icon" />
-      {{ content.title }}
+    <div class="box-title p-2 bg-gray-100 text-red-900 uppercase text-2xl">
+      <font-awesome-icon :icon="icon" />
+      {{ title }}
     </div>
     <div class="p-6">
-      <ul v-if="content.items != null" class="text-left">
-        <li v-for="(item, index) in content.items" :key="index">
-          <common-link :item="item" />
+      <ul v-if="items != null" class="text-left">
+        <li v-for="(item, index) in items" :key="index">
+          <common-link :label="item.label" :route="item.route" />
         </li>
       </ul>
       <span v-else class="text-lg text-red-500 font-bold"> None! </span>
@@ -16,14 +16,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
-import CommonLink, { CommonLinkProps } from '@/components/CommonLink.vue';
-
-export interface CommonBoxProps {
-  title: string;
-  icon: string;
-  items?: CommonLinkProps[];
-}
+import { defineComponent } from 'vue';
+import CommonLink from '@/components/CommonLink.vue';
 
 export default defineComponent({
   name: 'CommmonBox',
@@ -31,22 +25,23 @@ export default defineComponent({
     CommonLink
   },
   props: {
-    content: {
-      type: Object as PropType<CommonBoxProps>,
+    title: {
+      type: String,
       required: true
+    },
+    icon: {
+      type: String,
+      required: true
+    },
+    items: {
+      type: Array,
+      required: false
     }
   }
 });
 </script>
 
 <style lang="scss" scoped>
-.title {
-  font-size: 1.75rem;
-  font-family: 'Teko', sans-serif;
-  font-weight: 400;
-  text-transform: uppercase;
-}
-
 .box {
   overflow: hidden;
 }

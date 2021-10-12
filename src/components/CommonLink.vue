@@ -1,21 +1,21 @@
 <template>
-  <router-link :to="item.route">{{ item.label }}</router-link>
+  <router-link v-if="route != null" :to="route">{{ label }}</router-link>
+  <span v-else>{{ label }}</span>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
-
-export interface CommonLinkProps {
-  label: string;
-  route: string;
-}
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'CommmonLink',
   props: {
-    item: {
-      type: Object as PropType<CommonLinkProps>,
+    label: {
+      type: String,
       required: true
+    },
+    route: {
+      type: String,
+      required: false
     }
   }
 });

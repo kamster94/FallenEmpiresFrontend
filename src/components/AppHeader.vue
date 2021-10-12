@@ -73,62 +73,20 @@
 import { defineComponent } from 'vue';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 import NavMenu from './NavMenu.vue';
-import { NavMenuItemProps } from './NavMenuItem.vue';
+import Navigation from '@/models/Navigation';
 
 export default defineComponent({
   components: { NavMenu, Disclosure, DisclosureButton, DisclosurePanel },
   name: 'AppHeader',
   data() {
-    const menuItems: NavMenuItemProps[] = [
-      {
-        label: 'Home',
-        icon: 'home',
-        route: '/'
-      },
-      {
-        label: 'Foundry VTT',
-        icon: 'dice-d20',
-        route: '/foundry'
-      },
-      {
-        label: 'Blog',
-        icon: 'newspaper',
-        route: '/blog'
-      },
-      {
-        label: 'Campaigns',
-        icon: 'flag',
-        route: '/campaigns'
-      },
-      {
-        label: 'Rules',
-        icon: 'book',
-        route: '/rules',
-        subItems: [
-          {
-            label: 'Character creation',
-            route: '/rules/character-creation'
-          },
-          {
-            label: 'Ancestries',
-            route: '/rules/ancestries'
-          }
-        ]
-      },
-      {
-        label: 'Setting',
-        icon: 'globe-africa',
-        route: '/setting'
-      },
-      {
-        label: 'Misc',
-        icon: 'chess-rook',
-        route: '/misc'
-      }
-    ];
     return {
-      menuItems
+      menuItems: [] as Navigation[]
     };
+  },
+  beforeMount() {
+    this.axios.get(`http://localhost:3000/menu/`).then((response) => {
+      this.menuItems = response.data;
+    });
   }
 });
 </script>

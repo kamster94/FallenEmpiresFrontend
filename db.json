@@ -1,0 +1,49 @@
+{
+    "homeBoxes": [
+        { "id": 1, "title": "Start here", "icon": "book-open", "items": [
+            { "label": "Setting Foundations", "route": "/" },
+            { "label": "Planned Campaigns", "route": "/" },
+            { "label": "Character Creation", "route": "/" },
+            { "label": "Homebrew", "route": "/" }
+            ] 
+        },
+        { "id": 2, "title": "Primary ancestries", "icon": "users", "items": [
+            { "label": "Human", "route": "/rules/ancestries/human" },
+            { "label": "Dwarf", "route": "/" },
+            { "label": "Elf", "route": "/" }
+            ] 
+        },
+        { "id": 3, "title": "Secondary ancestries", "icon": "user-plus" }
+    ],
+    "menu": [
+        { "id": 1, "label": "Home", "route": "/" , "icon": "home" },
+        { "id": 2, "label": "Foundry VTT", "route": "/foundry" , "icon": "dice-d20" },
+        { "id": 3, "label": "Blog", "route": "/blog" , "icon": "newspaper" },
+        { "id": 4, "label": "Campaigns", "route": "/campaigns" , "icon": "flag", "subItems": []},
+        { "id": 5, "label": "Rules", "route": "/rules" , "icon": "book", "subItems": [
+            {
+                "label": "Character creation", "route": "/rules/character-creation"
+            },
+            {
+                "label": "Ancestries", "route": "/rules/ancestries"
+            }
+            ]
+        },
+        { "id": 6, "label": "Setting", "route": "/setting" , "icon": "globe-africa", "subItems": []},
+        { "id": 7, "label": "Misc", "route": "/misc" , "icon": "chess-rook", "subItems": []}
+    ],
+    "feats": [
+        { "id": 1, "title": "Adapted Cantrip", "category": "Feat 1", "tags": [ "Common", "Human" ], "prerequisites" : "spellcasting class feature", "text": "Through study of multiple magical traditions, you’ve altered a spell to suit your spellcasting style. Choose one cantrip from a magical tradition other than your own. If you have a spell repertoire or a spellbook, replace one of the cantrips you know or have in your spellbook with the chosen spell. If you prepare spells without a spellbook (if you’re a cleric or druid, for example), one of your cantrips must always be the chosen spell, and you prepare the rest normally. You can cast this cantrip as a spell of your class’s tradition. If you swap or retrain this cantrip later, you can choose its replacement from the same alternate tradition or a different one.", "source": "Pathfinder 2 Core Rulebook" },
+        { "id": 2, "title": "Human Determination", "category": "Feat 1", "tags": [ "Common", "Human", "Fortune", "Homebrew" ], "frequency": "once per day", "trigger": "You attempt a skill check, attack roll or saving throw.", "text": "You are steadfast and determined to overcome any obstacle. When attempting a skill check, attack roll or saving throw, you can roll twice and take the better result." },
+        { "id": 3, "title": "Inspire Imitation", "category": "Feat 1", "tags": [ "Common", "Human" ], "text": "Your own actions inspire your allies to great achievements. Whenever you critically succeed at a skill check, you automatically qualify to use the Aid reaction when attempting to help an ally using the same skill, even without spending an action to prepare to do so." , "source": "Pathfinder 2 Core Rulebook" }
+    ],
+    "heritages": [
+        { "id": 1, "title": "Dziecię Lasu", "category": "HERITAGE (II)", "tags": [ "Rare", "Individual", "Magical", "Homebrew" ], "hitPoints": "6" , "abilityBoost": "Wisdom or Charisma, Free", "text": "TBD. See the Heritage's page to find its features, feats and details."},
+        { "id": 2, "title": "Half-Elf", "category": "HERITAGE (II)", "tags": [ "Rare", "Individual" ], "text": "TBD. See the Heritage's page to find its features, feats and details."}
+    ],
+    "ancestries": [
+        { "id": "human", "name": "Human", "hitPoints": "8", "size": "Medium", "speed": "25 feet", "abilityBoost": "Free", "traits": [ "Humanoid", "Human" ], "cultures": [ "Valdorczycy" ] },
+        { "id": "dwarf", "name": "Dwarf", "hitPoints": "10", "size": "Medium", "speed": "20 feet", "abilityBoost": "Constitution or Intelligence", "traits": [ "Humanoid", "Dwarf" ], "cultures": [ "Ogniste Krasnoludy" ] },
+        { "id": "elf", "name": "Elf", "hitPoints": "6", "size": "Medium", "speed": "30 feet", "abilityBoost": "Dexterity or Wisdom", "traits": [ "Humanoid", "Elf" ], "cultures": [ "Dzikie Elfy" ] }
+    ]
+}

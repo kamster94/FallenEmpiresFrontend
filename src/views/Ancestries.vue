@@ -1,12 +1,18 @@
 <template>
-  <common-title>Ancestries</common-title>
-  <common-table :content="ancestries" />
+  <router-view v-if="this.$route.path.match('/ancestries/+')" />
+  <div v-else>
+    <common-title>Ancestries</common-title>
+    <common-table :table="ancestries" />
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import CommonTable, { CommonTableProps } from '@/components/CommonTable.vue';
+import CommonTable from '@/components/CommonTable.vue';
 import CommonTitle from '@/components/CommonTitle.vue';
+import Table, { Cell, Row } from '@/models/Table';
+import Ancestry from '@/models/Ancestry';
+import Link from '@/models/Link';
 
 export default defineComponent({
   name: 'Ancestries',
@@ -15,7 +21,7 @@ export default defineComponent({
     CommonTitle
   },
   data() {
-    const ancestries: CommonTableProps = {
+    const ancestries: Table = {
       headers: [
         'Name',
         'Hit Points',
@@ -25,45 +31,41 @@ export default defineComponent({
         'Traits',
         'Cultures'
       ],
-      rows: [
-        {
-          cells: [
-            { text: 'Human', route: '/' },
-            { text: '8' },
-            { text: 'Medium' },
-            { text: '25 feet' },
-            { text: 'Free' },
-            { tags: ['Humanoid', 'Human'] },
-            { list: [{ label: 'Valdorczycy', route: '/' }] }
-          ]
-        },
-        {
-          cells: [
-            { text: 'Dwarf', route: '/' },
-            { text: '10' },
-            { text: 'Medium' },
-            { text: '20 feet' },
-            { text: 'Constitution or Intelligence' },
-            { tags: ['Humanoid', 'Dwarf'] },
-            { list: [{ label: 'Ogniste Krasnoludy', route: '/' }] }
-          ]
-        },
-        {
-          cells: [
-            { text: 'Elf', route: '/' },
-            { text: '6' },
-            { text: 'Medium' },
-            { text: '30 feet' },
-            { text: 'Dexterity or Wisdom' },
-            { tags: ['Humanoid', 'Elf'] },
-            { list: [{ label: 'Dzikie Elfy', route: '/' }] }
-          ]
-        }
-      ]
+      rows: []
     };
     return {
       ancestries
     };
+  },
+  methods: {
+    convertToRow(ancestry: Ancestry) {
+      const name: Cell = {
+        text: {
+          label: ancestry.name,
+          route: `/rules/ancestries/${ancestry.name.toLowerCase()}`
+        }
+      };
+      const hitPoints: Cell = { text: { label: ancestry.hitPoints } };
+      const size: Cell = { text: { label: ancestry.size } };
+      const speed: Cell = { text: { label: ancestry.speed } };
+      const abilityBoost: Cell = { text: { label: ancestry.abilityBoost } };
+      const traits: Cell = { tags: ancestry.traits };
+      const cultures: Cell = {
+        list: ancestry.cultures?.map((culture: string) => {
+          return { label: culture } as Link;
+        })
+      };
+      const row: Row = {
+        cells: [name, hitPoints, size, speed, abilityBoost, traits, cultures]
+      };
+      return this.ancestries.rows.push(row);
+    }
+  },
+  beforeMount() {
+    this.axios.get(`http://localhost:3000/ancestries/`).then((response) => {
+      const data = response.data as Ancestry[];
+      data.forEach((ancestry) => this.convertToRow(ancestry));
+    });
   }
 });
 </script>
