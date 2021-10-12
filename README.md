@@ -22,6 +22,16 @@ This app is frontend for Age of Fallen Empires project.
 
 <hr />
 
+## Running app locally
+
+- To run the app you need to connect to Web API for data.
+- You can use local json-server fake Rest API for testing.
+- To install json-server, use command
+
+```
+npm install -g json-server
+```
+
 ## Useful npm commands
 
 - Install all dependencies form `package.json`
@@ -46,4 +56,10 @@ npm run build
 
 ```
 npm run lint
+```
+
+- Run json-server
+
+```
+json-server --watch db.json
 ```
