@@ -6,7 +6,10 @@
 Age of Fallen Empires
 </h1>
 
-[![CodeQL](https://github.com/kamster94/FallenEmpiresFrontend/actions/workflows/codeql-analysis.yml/badge.svg?branch=main)](https://github.com/kamster94/FallenEmpiresFrontend/actions/workflows/codeql-analysis.yml) ![GitHub](https://img.shields.io/github/license/kamster94/FallenEmpiresFrontend)
+[![CodeQL](https://github.com/kamster94/FallenEmpiresFrontend/actions/workflows/codeql-analysis.yml/badge.svg?branch=main)](https://github.com/kamster94/FallenEmpiresFrontend/actions/workflows/codeql-analysis.yml)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kamster94/FallenEmpiresFrontend/Node.js%20CI)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/kamster94/FallenEmpiresFrontend)
+![GitHub](https://img.shields.io/github/license/kamster94/FallenEmpiresFrontend)
 
 This app is frontend for Age of Fallen Empires project.
 
