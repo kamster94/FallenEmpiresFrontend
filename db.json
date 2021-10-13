@@ -42,7 +42,7 @@
         { "id": 2, "title": "Half-Elf", "category": "HERITAGE (II)", "tags": [ "Rare", "Individual" ], "text": "TBD. See the Heritage's page to find its features, feats and details."}
     ],
     "ancestries": [
-        { "id": "human", "name": "Human", "hitPoints": "8", "size": "Medium", "speed": "25 feet", "abilityBoost": "Free", "traits": [ "Humanoid", "Human" ], "cultures": [ "Valdorczycy" ] },
+        { "id": "human", "name": "Human", "rarity": "Common", "hitPoints": "8", "size": "Medium", "speed": "25 feet", "abilityBoost": "Free", "languages": "You know 2 languages common to your culture or prevalent in your region (usually Common and the language of your ancestry). If your Intelligence modifier is positive, you know additional languages equal to its value. Additional languages should also be common to you.", "traits": [ "Humanoid", "Human" ], "cultures": [ "Valdorczycy" ], "startingAncestryFeats": [ "No Heritage: 6", "With Heritage (0): 6", "With Heritage (I): 5", "With Heritage (II): 4" , "With Heritage (III): 3"], "description": "TBD" },
         { "id": "dwarf", "name": "Dwarf", "hitPoints": "10", "size": "Medium", "speed": "20 feet", "abilityBoost": "Constitution or Intelligence", "traits": [ "Humanoid", "Dwarf" ], "cultures": [ "Ogniste Krasnoludy" ] },
         { "id": "elf", "name": "Elf", "hitPoints": "6", "size": "Medium", "speed": "30 feet", "abilityBoost": "Dexterity or Wisdom", "traits": [ "Humanoid", "Elf" ], "cultures": [ "Dzikie Elfy" ] }
     ]
