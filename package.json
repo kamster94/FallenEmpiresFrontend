@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "json-server": "json-server --watch db.json"
+    "json-server": "json-server --watch db.json",
+    "start": "concurrently \"npm run json-server\" \"npm run serve\""
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
