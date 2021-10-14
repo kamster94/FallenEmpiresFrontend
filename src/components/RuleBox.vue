@@ -1,6 +1,6 @@
 <template>
-  <div class="box-border border border-red-900 rounded-md text-left p-2">
-    <div class="box-title px-2 text-2xl border-b border-red-900 uppercase">
+  <div class="box-border border border-primary rounded-md text-left p-2">
+    <div class="box-title px-2 text-2xl border-b border-primary uppercase">
       {{ title }}
       <span class="float-right">
         {{ category }}
@@ -11,13 +11,13 @@
         {{ tag }}
       </common-tag>
     </div>
-    <div class="px-2 border-b border-red-900" v-if="!!this.$slots.header">
+    <div class="px-2 border-b border-primary" v-if="!!this.$slots.header">
       <slot name="header"></slot>
     </div>
     <div class="px-2" v-if="!!this.$slots.body">
       <slot name="body"></slot>
     </div>
-    <div class="px-2 border-t border-red-900" v-if="!!this.$slots.footer">
+    <div class="px-2 border-t border-primary" v-if="!!this.$slots.footer">
       <slot name="footer" class="p-2"></slot>
     </div>
   </div>

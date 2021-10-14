@@ -28,6 +28,7 @@ export default defineComponent({
 
 body {
   background-color: #ededed;
+  background-image: url('./assets/images/bg.jpg');
 }
 
 #app {
@@ -39,7 +40,7 @@ body {
 }
 
 .content {
-  background-image: url('./assets/images/background.png');
+  background-image: url('./assets/images/paper.jpg');
   max-width: 1261px;
 }
 

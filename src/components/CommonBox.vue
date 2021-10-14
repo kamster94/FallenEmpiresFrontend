@@ -1,6 +1,6 @@
 <template>
-  <div class="box-border border border-red-900 rounded-md bg-white box">
-    <div class="box-title p-2 bg-gray-100 text-red-900 uppercase text-2xl">
+  <div class="box-border border border-primary rounded-md bg-box box bg-beige">
+    <div class="box-title p-2 bg-primary text-beige uppercase text-2xl">
       <font-awesome-icon :icon="icon" />
       {{ title }}
     </div>
