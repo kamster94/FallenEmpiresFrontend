@@ -2,13 +2,13 @@
   <div class="flex flex-col text-center">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-        <div class="overflow-hidden border border-red-900 rounded-md">
+        <div class="overflow-hidden border border-primary rounded-md">
           <table class="min-w-full">
-            <thead class="bg-gray-100 title p-2">
-              <tr class="text-red-900 tracking-wider">
+            <thead class="bg-primary box-title p-2 text-2xl uppercase">
+              <tr class="text-beige">
                 <th
                   scope="col"
-                  class="px-6 py-3"
+                  class="px-2 py-2"
                   v-for="header in table.headers"
                   :key="header.index"
                 >
@@ -16,14 +16,14 @@
                 </th>
               </tr>
             </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
+            <tbody>
               <tr
-                class="whitespace-nowra"
+                class="whitespace-nowrap"
                 v-for="row in table.rows"
                 :key="row.index"
               >
                 <td
-                  class="px-6 py-4"
+                  class="px-2 py-2"
                   v-for="cell in row.cells"
                   :key="cell.index"
                 >
@@ -72,10 +72,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.title {
-  font-size: 1.5rem;
-  font-family: 'Teko', sans-serif;
-  font-weight: 400;
-  text-transform: uppercase;
+tbody tr:nth-child(odd) {
+  background: #ede3c7 !important;
+}
+tbody tr:nth-child(even) {
+  background: #f4eee0 !important;
 }
 </style>

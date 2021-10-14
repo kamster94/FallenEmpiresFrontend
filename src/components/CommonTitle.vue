@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-5xl text-red-900 title font-bold text-center"><slot /></h1>
+  <h1 class="text-5xl text-primary title font-bold text-center"><slot /></h1>
   <img src="@/assets/images/subtitle_line.png" class="mx-auto mb-6" />
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <h2 class="section-title my-2 text-blue-900 text-3xl font-bold"><slot /></h2>
+  <h2 class="section-title my-2 text-secondary text-3xl font-bold"><slot /></h2>
 </template>
 
 <script lang="ts">
