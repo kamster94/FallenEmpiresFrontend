@@ -104,17 +104,17 @@ export default defineComponent({
   beforeMount() {
     const ancestryName = this.$route.params.name;
     apiClient
-      .get(`http://localhost:3000/ancestries/${ancestryName}`)
+      .get(`/ancestries/${ancestryName}`)
       .then((response) => {
         this.ancestry = response.data;
       })
       .catch(() => {
         this.$router.push({ path: '/404' });
       });
-    apiClient.get(`http://localhost:3000/feats/`).then((response) => {
+    apiClient.get(`/feats`).then((response) => {
       this.feats = response.data;
     });
-    apiClient.get(`http://localhost:3000/heritages/`).then((response) => {
+    apiClient.get(`/heritages`).then((response) => {
       this.heritages = response.data;
     });
   }
