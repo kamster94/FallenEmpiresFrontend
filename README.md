@@ -8,6 +8,8 @@ Age of Fallen Empires
 
 [![CodeQL](https://github.com/kamster94/FallenEmpiresFrontend/actions/workflows/codeql-analysis.yml/badge.svg?branch=main)](https://github.com/kamster94/FallenEmpiresFrontend/actions/workflows/codeql-analysis.yml)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kamster94/FallenEmpiresFrontend/Node.js%20CI)
+![GitHub deployments](https://img.shields.io/github/deployments/kamster94/FallenEmpiresFrontend/Production?label=App%20deployment)
+![GitHub deployments](https://img.shields.io/github/deployments/kamster94/FallenEmpiresFrontend/fallen-empires-frontend-api?label=json-server%20deployment)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/kamster94/FallenEmpiresFrontend)
 ![GitHub](https://img.shields.io/github/license/kamster94/FallenEmpiresFrontend)
 
@@ -22,6 +24,14 @@ This app is frontend for Age of Fallen Empires project.
 
 <hr />
 
+## Deployment
+
+- This app is automatically deployed to [Vercel](https://vercel.com) and [Heroku](https://heroku.com) (for json-server).
+- You can check deployment status in box to the right. It should show 2 or 3 environments:
+  - Production - this is latest deployment from `main`.
+  - fallen-empires-frontend-api - this is json-server deployment.
+  - Preview - this is latest deployment from branch (not yet merged to main).
+
 ## Running app locally
 
 - To run the app you need to connect to Web API for data.
@@ -30,6 +40,12 @@ This app is frontend for Age of Fallen Empires project.
 
 ```
 npm install -g json-server
+```
+
+- You need to create `.env` file in root folder of the project and put variable there:
+
+```
+VUE_APP_BASE_API_URL=HostWhereJsonServerRuns
 ```
 
 ## Useful npm commands
@@ -58,8 +74,8 @@ npm run build
 npm run lint
 ```
 
-- Run json-server
+- Run json-server locally
 
 ```
-json-server --watch db.json
+npm run json-server
 ```

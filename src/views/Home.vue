@@ -16,6 +16,7 @@ import { defineComponent } from 'vue';
 import CommonBox from '@/components/CommonBox.vue';
 import CommonTitle from '@/components/CommonTitle.vue';
 import HomeBox from '@/models/HomeBox';
+import apiClient from '@/plugins/apiClient';
 export default defineComponent({
   name: 'Home',
   components: {
@@ -28,7 +29,7 @@ export default defineComponent({
     };
   },
   beforeMount() {
-    this.axios.get(`http://localhost:3000/homeBoxes/`).then((response) => {
+    apiClient.get(`/homeBoxes`).then((response) => {
       this.boxes = response.data;
     });
   }

@@ -82,6 +82,7 @@ import Heritage from '@/models/Heritage';
 import CommonSectionTitle from '@/components/CommonSectionTitle.vue';
 import ContentWithSidebar from '@/components/ContentWithSidebar.vue';
 import CommonTag from '@/components/CommonTag.vue';
+import apiClient from '@/plugins/apiClient';
 
 export default defineComponent({
   name: 'Ancestry',
@@ -102,7 +103,7 @@ export default defineComponent({
   },
   beforeMount() {
     const ancestryName = this.$route.params.name;
-    this.axios
+    apiClient
       .get(`http://localhost:3000/ancestries/${ancestryName}`)
       .then((response) => {
         this.ancestry = response.data;
@@ -110,10 +111,10 @@ export default defineComponent({
       .catch(() => {
         this.$router.push({ path: '/404' });
       });
-    this.axios.get(`http://localhost:3000/feats/`).then((response) => {
+    apiClient.get(`http://localhost:3000/feats/`).then((response) => {
       this.feats = response.data;
     });
-    this.axios.get(`http://localhost:3000/heritages/`).then((response) => {
+    apiClient.get(`http://localhost:3000/heritages/`).then((response) => {
       this.heritages = response.data;
     });
   }
