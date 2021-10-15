@@ -85,7 +85,7 @@ export default defineComponent({
     };
   },
   beforeMount() {
-    apiClient.get(`http://localhost:3000/menu/`).then((response) => {
+    apiClient.get(`/menu`).then((response) => {
       this.menuItems = response.data;
     });
   }

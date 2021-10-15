@@ -63,7 +63,7 @@ export default defineComponent({
     }
   },
   beforeMount() {
-    apiClient.get(`http://localhost:3000/ancestries/`).then((response) => {
+    apiClient.get(`/ancestries`).then((response) => {
       const data = response.data as Ancestry[];
       data.forEach((ancestry) => this.convertToRow(ancestry));
     });
