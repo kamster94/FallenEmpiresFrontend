@@ -13,6 +13,7 @@ import CommonTitle from '@/components/CommonTitle.vue';
 import Table, { Cell, Row } from '@/models/Table';
 import Ancestry from '@/models/Ancestry';
 import Link from '@/models/Link';
+import apiClient from '@/plugins/apiClient';
 
 export default defineComponent({
   name: 'Ancestries',
@@ -62,7 +63,7 @@ export default defineComponent({
     }
   },
   beforeMount() {
-    this.axios.get(`http://localhost:3000/ancestries/`).then((response) => {
+    apiClient.get(`http://localhost:3000/ancestries/`).then((response) => {
       const data = response.data as Ancestry[];
       data.forEach((ancestry) => this.convertToRow(ancestry));
     });

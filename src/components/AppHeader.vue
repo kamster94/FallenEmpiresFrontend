@@ -74,6 +74,7 @@ import { defineComponent } from 'vue';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 import NavMenu from './NavMenu.vue';
 import Navigation from '@/models/Navigation';
+import apiClient from '@/plugins/apiClient';
 
 export default defineComponent({
   components: { NavMenu, Disclosure, DisclosureButton, DisclosurePanel },
@@ -84,7 +85,7 @@ export default defineComponent({
     };
   },
   beforeMount() {
-    this.axios.get(`http://localhost:3000/menu/`).then((response) => {
+    apiClient.get(`http://localhost:3000/menu/`).then((response) => {
       this.menuItems = response.data;
     });
   }
