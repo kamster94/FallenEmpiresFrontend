@@ -58,13 +58,16 @@
               hover:text-opacity-100
             "
           >
-            <font-awesome-icon icon="sign-in-alt" class="mx-3" /> Sign in
+            <font-awesome-icon icon="sign-in-alt" /><span
+              class="hidden md:block ml-2"
+              >Sign in</span
+            >
           </a>
         </div>
       </div>
     </div>
     <DisclosurePanel class="sm:hidden text-white">
-      <div class="px-2 pt-2 pb-3 space-y-1">Mobile menu</div>
+      <nav-mobile-menu :menuItems="menuItems" />
     </DisclosurePanel>
   </Disclosure>
 </template>
@@ -73,11 +76,18 @@
 import { defineComponent } from 'vue';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 import NavMenu from './NavMenu.vue';
+import NavMobileMenu from './NavMobileMenu.vue';
 import Navigation from '@/models/Navigation';
 import apiClient from '@/plugins/apiClient';
 
 export default defineComponent({
-  components: { NavMenu, Disclosure, DisclosureButton, DisclosurePanel },
+  components: {
+    NavMenu,
+    NavMobileMenu,
+    Disclosure,
+    DisclosureButton,
+    DisclosurePanel
+  },
   name: 'AppHeader',
   data() {
     return {
