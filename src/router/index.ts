@@ -5,6 +5,9 @@ import Error404 from '../views/Error404.vue';
 import Rules from '../views/Rules.vue';
 import Ancestries from '../views/Ancestries.vue';
 import Ancestry from '../views/Ancestry.vue';
+import CharacterCreation from '../views/CharacterCreation.vue';
+import Heritages from '../views/Heritages.vue';
+import Feats from '../views/Feats.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -34,11 +37,12 @@ const routes: Array<RouteRecordRaw> = [
     path: '/rules',
     name: 'Rules',
     component: Rules,
+    redirect: '/',
     children: [
       {
         path: 'character-creation',
         name: 'Character creation',
-        component: Home
+        component: CharacterCreation
       },
       {
         path: 'ancestries',
@@ -51,6 +55,16 @@ const routes: Array<RouteRecordRaw> = [
             component: Ancestry
           }
         ]
+      },
+      {
+        path: 'heritages',
+        name: 'Heritages',
+        component: Heritages
+      },
+      {
+        path: 'feats',
+        name: 'Feats',
+        component: Feats
       }
     ]
   },
