@@ -1,7 +1,7 @@
 <template>
   <div>
     <common-title>
-      Character Creation
+      {{ page.name }}
       <template v-slot:headline>
         {{ page.headline }}
       </template>
@@ -18,7 +18,7 @@ import Page from '../models/Page';
 import ContentMarkdown from '@/components/ContentMarkdown.vue';
 
 export default defineComponent({
-  name: 'CharacterCreation',
+  name: 'ContentPage',
   components: {
     CommonTitle,
     ContentMarkdown
@@ -28,10 +28,29 @@ export default defineComponent({
       page: {} as Page
     };
   },
+  methods: {
+    updateContent() {
+      if (this.$route.params.name != null) {
+        const pageName = this.$route.params.name;
+        apiClient
+          .get(`/pages/${pageName}`)
+          .then((response) => {
+            this.page = response.data;
+          })
+          .catch(() => {
+            this.$router.push({ path: '/404' });
+          });
+      }
+    }
+  },
   beforeMount() {
-    apiClient.get(`/pages/character-creation`).then((response) => {
-      this.page = response.data;
-    });
+    this.updateContent();
+  },
+  watch: {
+    $route() {
+      this.updateContent();
+      return;
+    }
   }
 });
 </script>
