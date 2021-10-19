@@ -2,10 +2,10 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
 import Foundry from '../views/Foundry.vue';
 import Error404 from '../views/Error404.vue';
-import Rules from '../views/Rules.vue';
+import CategoryRouter from '../views/CategoryRouter.vue';
 import Ancestries from '../views/Ancestries.vue';
 import Ancestry from '../views/Ancestry.vue';
-import CharacterCreation from '../views/CharacterCreation.vue';
+import ContentPage from '../views/ContentPage.vue';
 import Heritages from '../views/Heritages.vue';
 import Feats from '../views/Feats.vue';
 
@@ -36,14 +36,9 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/rules',
     name: 'Rules',
-    component: Rules,
+    component: CategoryRouter,
     redirect: '/',
     children: [
-      {
-        path: 'character-creation',
-        name: 'Character creation',
-        component: CharacterCreation
-      },
       {
         path: 'ancestries',
         name: 'Ancestries',
@@ -65,18 +60,32 @@ const routes: Array<RouteRecordRaw> = [
         path: 'feats',
         name: 'Feats',
         component: Feats
+      },
+      {
+        path: ':name',
+        name: 'Rules Page',
+        component: ContentPage
       }
     ]
   },
   {
     path: '/setting',
     name: 'Setting',
-    component: Home
+    component: CategoryRouter,
+    redirect: '/',
+    children: [
+      {
+        path: ':name',
+        name: 'Setting Page',
+        component: ContentPage
+      }
+    ]
   },
   {
     path: '/misc',
     name: 'Misc',
-    component: Home
+    component: CategoryRouter,
+    redirect: '/'
   },
   {
     path: '/:catchAll(.*)',
