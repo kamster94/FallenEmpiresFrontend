@@ -1,24 +1,24 @@
 <template>
-  <table-with-router title="Heritages" route="heritages" :table="heritages" />
+  <table-with-router title="Cultures" route="cultures" :table="cultures" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import TableWithRouter from '@/components/TableWithRouter.vue';
 import Table from '@/models/Table';
+import TableWithRouter from '@/components/TableWithRouter.vue';
 
 export default defineComponent({
-  name: 'Heritages',
+  name: 'Cultures',
   components: {
     TableWithRouter
   },
   data() {
-    const heritages: Table = {
-      headers: ['Name', 'Ancestries', 'Value'],
+    const cultures: Table = {
+      headers: ['Name', 'Ancestries'],
       rows: []
     };
     return {
-      heritages
+      cultures
     };
   }
 });

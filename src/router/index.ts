@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
 import Foundry from '../views/Foundry.vue';
 import Error404 from '../views/Error404.vue';
@@ -8,6 +8,13 @@ import Ancestry from '../views/Ancestry.vue';
 import ContentPage from '../views/ContentPage.vue';
 import Heritages from '../views/Heritages.vue';
 import Feats from '../views/Feats.vue';
+import Blog from '../views/Blog.vue';
+import Campaigns from '../views/Campaigns.vue';
+import Backgrounds from '../views/Backgrounds.vue';
+import Cultures from '../views/Cultures.vue';
+import Languages from '../views/Languages.vue';
+import Locations from '../views/Locations.vue';
+import Releases from '../views/Releases.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -26,12 +33,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/blog',
     name: 'Blog',
-    component: Home
+    component: Blog
   },
   {
     path: '/campaigns',
     name: 'Campaigns',
-    component: Home
+    component: Campaigns
   },
   {
     path: '/rules',
@@ -75,6 +82,26 @@ const routes: Array<RouteRecordRaw> = [
     redirect: '/',
     children: [
       {
+        path: 'cultures',
+        name: 'Cultures',
+        component: Cultures
+      },
+      {
+        path: 'backgrounds',
+        name: 'Backgrounds',
+        component: Backgrounds
+      },
+      {
+        path: 'languages',
+        name: 'Languages',
+        component: Languages
+      },
+      {
+        path: 'locations',
+        name: 'Locations',
+        component: Locations
+      },
+      {
         path: ':name',
         name: 'Setting Page',
         component: ContentPage
@@ -85,7 +112,19 @@ const routes: Array<RouteRecordRaw> = [
     path: '/misc',
     name: 'Misc',
     component: CategoryRouter,
-    redirect: '/'
+    redirect: '/',
+    children: [
+      {
+        path: 'releases',
+        name: 'Releases',
+        component: Releases
+      },
+      {
+        path: ':name',
+        name: 'Misc Page',
+        component: ContentPage
+      }
+    ]
   },
   {
     path: '/:catchAll(.*)',
@@ -95,7 +134,7 @@ const routes: Array<RouteRecordRaw> = [
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes
 });
 

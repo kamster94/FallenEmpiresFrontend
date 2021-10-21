@@ -1,15 +1,14 @@
 <template>
-  <router-view v-if="this.$route.path.match('/ancestries/+')" />
-  <div v-else>
-    <common-title>Ancestries</common-title>
-    <common-table :table="ancestries" />
-  </div>
+  <table-with-router
+    title="Ancestries"
+    route="ancestries"
+    :table="ancestries"
+  />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import CommonTable from '@/components/CommonTable.vue';
-import CommonTitle from '@/components/CommonTitle.vue';
+import TableWithRouter from '@/components/TableWithRouter.vue';
 import Table, { Cell, Row } from '@/models/Table';
 import Ancestry from '@/models/Ancestry';
 import Link from '@/models/Link';
@@ -18,8 +17,7 @@ import apiClient from '@/plugins/apiClient';
 export default defineComponent({
   name: 'Ancestries',
   components: {
-    CommonTable,
-    CommonTitle
+    TableWithRouter
   },
   data() {
     const ancestries: Table = {
