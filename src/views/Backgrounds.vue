@@ -1,5 +1,9 @@
 <template>
-  <table-with-router title="Heritages" route="heritages" :table="heritages" />
+  <table-with-router
+    title="Backgrounds"
+    route="backgrounds"
+    :table="backgrounds"
+  />
 </template>
 
 <script lang="ts">
@@ -8,17 +12,17 @@ import TableWithRouter from '@/components/TableWithRouter.vue';
 import Table from '@/models/Table';
 
 export default defineComponent({
-  name: 'Heritages',
+  name: 'Backgrounds',
   components: {
     TableWithRouter
   },
   data() {
-    const heritages: Table = {
-      headers: ['Name', 'Ancestries', 'Value'],
+    const backgrounds: Table = {
+      headers: ['Name', 'Ability Boosts', 'Skill', 'Lore', 'Feat'],
       rows: []
     };
     return {
-      heritages
+      backgrounds
     };
   }
 });
