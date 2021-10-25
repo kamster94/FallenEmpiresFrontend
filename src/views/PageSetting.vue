@@ -18,7 +18,7 @@ import Page from '../models/Page';
 import ContentMarkdown from '@/components/ContentMarkdown.vue';
 
 export default defineComponent({
-  name: 'ContentPage',
+  name: 'PageSetting',
   components: {
     CommonTitle,
     ContentMarkdown
@@ -28,28 +28,17 @@ export default defineComponent({
       page: {} as Page
     };
   },
-  methods: {
-    updateContent() {
-      if (this.$route.params.name != null) {
-        const pageName = this.$route.params.name;
-        apiClient
-          .get(`/pages/${pageName}`)
-          .then((response) => {
-            this.page = response.data;
-          })
-          .catch(() => {
-            this.$router.push({ path: '/404' });
-          });
-      }
-    }
-  },
   beforeMount() {
-    this.updateContent();
-  },
-  watch: {
-    $route() {
-      this.updateContent();
-      return;
+    if (this.$route.params.name != null) {
+      const pageName = this.$route.params.name;
+      apiClient
+        .get(`/pages/setting/${pageName}`)
+        .then((response) => {
+          this.page = response.data;
+        })
+        .catch(() => {
+          this.$router.push({ path: '/404' });
+        });
     }
   }
 });
