@@ -5,7 +5,9 @@ import Error404 from '../views/Error404.vue';
 import CategoryRouter from '../views/CategoryRouter.vue';
 import Ancestries from '../views/Ancestries.vue';
 import Ancestry from '../views/Ancestry.vue';
-import ContentPage from '../views/ContentPage.vue';
+import PageRules from '../views/PageRules.vue';
+import PageSetting from '../views/PageSetting.vue';
+import PageMisc from '../views/PageMisc.vue';
 import Heritages from '../views/Heritages.vue';
 import Feats from '../views/Feats.vue';
 import Blog from '../views/Blog.vue';
@@ -71,7 +73,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: ':name',
         name: 'Rules Page',
-        component: ContentPage
+        component: PageRules
       }
     ]
   },
@@ -104,7 +106,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: ':name',
         name: 'Setting Page',
-        component: ContentPage
+        component: PageSetting
       }
     ]
   },
@@ -122,7 +124,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: ':name',
         name: 'Misc Page',
-        component: ContentPage
+        component: PageMisc
       }
     ]
   },

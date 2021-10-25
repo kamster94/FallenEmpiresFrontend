@@ -1,0 +1,5 @@
+{
+    "/pages/rules/*": "/rules-pages/$1",
+    "/pages/setting/*": "/setting-pages/$1",
+    "/pages/misc/*": "/misc-pages/$1"
+}
