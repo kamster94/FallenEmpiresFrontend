@@ -12,7 +12,7 @@ import TableWithRouter from '@/components/TableWithRouter.vue';
 import Table, { Cell, Row } from '@/models/Table';
 import Ancestry from '@/models/Ancestry';
 import Link from '@/models/Link';
-import apiClient from '@/plugins/apiClient';
+import AncestriesDataService from '@/services/AncestriesDataService';
 
 export default defineComponent({
   name: 'Ancestries',
@@ -60,11 +60,9 @@ export default defineComponent({
       return this.ancestries.rows.push(row);
     }
   },
-  beforeMount() {
-    apiClient.get(`/ancestries`).then((response) => {
-      const data = response.data as Ancestry[];
-      data.forEach((ancestry) => this.convertToRow(ancestry));
-    });
+  async beforeMount() {
+    const ancestries = await AncestriesDataService.get();
+    ancestries.forEach((ancestry) => this.convertToRow(ancestry));
   }
 });
 </script>

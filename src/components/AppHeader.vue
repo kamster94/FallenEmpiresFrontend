@@ -78,7 +78,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 import NavMenu from './NavMenu.vue';
 import NavMobileMenu from './NavMobileMenu.vue';
 import Navigation from '@/models/Navigation';
-import apiClient from '@/plugins/apiClient';
+import CommonDataService from '@/services/CommonDataService';
 
 export default defineComponent({
   components: {
@@ -94,10 +94,8 @@ export default defineComponent({
       menuItems: [] as Navigation[]
     };
   },
-  beforeMount() {
-    apiClient.get(`/menu`).then((response) => {
-      this.menuItems = response.data;
-    });
+  async beforeMount() {
+    this.menuItems = await CommonDataService.getMenu();
   }
 });
 </script>

@@ -82,7 +82,9 @@ import Heritage from '@/models/Heritage';
 import CommonSectionTitle from '@/components/CommonSectionTitle.vue';
 import ContentWithSidebar from '@/components/ContentWithSidebar.vue';
 import CommonTag from '@/components/CommonTag.vue';
-import apiClient from '@/plugins/apiClient';
+import AncestriesDataService from '@/services/AncestriesDataService';
+import HeritagesDataService from '@/services/HeritagesDataService';
+import FeatsDataService from '@/services/FeatsDataService';
 
 export default defineComponent({
   name: 'Ancestry',
@@ -101,22 +103,16 @@ export default defineComponent({
       ancestry: {} as Ancestry
     };
   },
-  beforeMount() {
-    const ancestryName = this.$route.params.name;
-    apiClient
-      .get(`/ancestries/${ancestryName}`)
-      .then((response) => {
-        this.ancestry = response.data;
-      })
-      .catch(() => {
-        this.$router.push({ path: '/404' });
-      });
-    apiClient.get(`/feats`).then((response) => {
-      this.feats = response.data;
-    });
-    apiClient.get(`/heritages`).then((response) => {
-      this.heritages = response.data;
-    });
+  async beforeMount() {
+    const ancestryName = this.$route.params.name.toString();
+    const ancestry = await AncestriesDataService.getByName(ancestryName);
+    if (ancestry != null) {
+      this.ancestry = ancestry;
+    } else {
+      this.$router.push({ path: '/404' });
+    }
+    this.feats = await FeatsDataService.get();
+    this.heritages = await HeritagesDataService.get();
   }
 });
 </script>

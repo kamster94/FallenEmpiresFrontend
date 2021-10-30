@@ -13,9 +13,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import CommonTitle from '@/components/CommonTitle.vue';
-import apiClient from '@/plugins/apiClient';
 import Page from '../models/Page';
 import ContentMarkdown from '@/components/ContentMarkdown.vue';
+import PagesDataService from '@/services/PagesDataService';
 
 export default defineComponent({
   name: 'PageMisc',
@@ -28,17 +28,15 @@ export default defineComponent({
       page: {} as Page
     };
   },
-  beforeMount() {
+  async beforeMount() {
     if (this.$route.params.name != null) {
-      const pageName = this.$route.params.name;
-      apiClient
-        .get(`/pages/misc/${pageName}`)
-        .then((response) => {
-          this.page = response.data;
-        })
-        .catch(() => {
-          this.$router.push({ path: '/404' });
-        });
+      const pageName = this.$route.params.name.toString();
+      const page = await PagesDataService.get('misc', pageName);
+      if (page != null) {
+        this.page = page;
+      } else {
+        this.$router.push({ path: '/404' });
+      }
     }
   }
 });
