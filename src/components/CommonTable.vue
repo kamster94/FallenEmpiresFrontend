@@ -55,9 +55,11 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
+
+import Table from '@/models/Table';
+
 import CommonLink from '@/components/CommonLink.vue';
 import CommonTag from './CommonTag.vue';
-import Table from '@/models/Table';
 
 export default defineComponent({
   components: { CommonLink, CommonTag },

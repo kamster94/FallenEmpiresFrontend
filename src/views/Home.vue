@@ -13,10 +13,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+
+import CommonDataService from '@/services/CommonDataService';
+
+import HomeBox from '@/models/HomeBox';
+
 import CommonBox from '@/components/CommonBox.vue';
 import CommonTitle from '@/components/CommonTitle.vue';
-import HomeBox from '@/models/HomeBox';
-import CommonDataService from '@/services/CommonDataService';
 
 export default defineComponent({
   name: 'Home',

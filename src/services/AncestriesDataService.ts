@@ -1,12 +1,12 @@
 import Ancestry from '@/models/Ancestry';
-import apiClient from '@/plugins/apiClient';
+import ApiClient from '@/plugins/ApiClient';
 
 const resource = '/ancestries';
 
 export default {
   async get(): Promise<Ancestry[]> {
     try {
-      return (await apiClient.get(`${resource}`)).data;
+      return (await ApiClient.get(`${resource}`)).data;
     } catch (error) {
       console.error(error);
       return [];
@@ -15,7 +15,7 @@ export default {
 
   async getByName(name: string): Promise<Ancestry | null> {
     try {
-      return (await apiClient.get(`${resource}/${name}`)).data;
+      return (await ApiClient.get(`${resource}/${name}`)).data;
     } catch (error) {
       console.error(error);
       return null;

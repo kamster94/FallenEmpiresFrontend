@@ -1,7 +1,7 @@
 <template>
   <app-header />
   <div
-    class="mx-auto px-4 my-8 p-8 content border-solid border-2 border-red-900"
+    class="mx-auto px-4 my-8 p-8 content border-solid border-2 border-primary"
   >
     <router-view />
   </div>
@@ -10,6 +10,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
 

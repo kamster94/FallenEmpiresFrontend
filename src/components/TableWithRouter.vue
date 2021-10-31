@@ -8,7 +8,9 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
+
 import Table from '@/models/Table';
+
 import CommonTable from '@/components/CommonTable.vue';
 import CommonTitle from '@/components/CommonTitle.vue';
 

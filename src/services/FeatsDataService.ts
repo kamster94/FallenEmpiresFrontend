@@ -1,12 +1,12 @@
+import ApiClient from '@/plugins/ApiClient';
 import Feat from '@/models/Feat';
-import apiClient from '@/plugins/apiClient';
 
 const resource = '/feats';
 
 export default {
   async get(): Promise<Feat[]> {
     try {
-      return (await apiClient.get(`${resource}`)).data;
+      return (await ApiClient.get(`${resource}`)).data;
     } catch (error) {
       console.error(error);
       return [];
@@ -15,7 +15,7 @@ export default {
 
   async getByName(name: string): Promise<Feat | null> {
     try {
-      return (await apiClient.get(`${resource}/${name}`)).data;
+      return (await ApiClient.get(`${resource}/${name}`)).data;
     } catch (error) {
       console.error(error);
       return null;

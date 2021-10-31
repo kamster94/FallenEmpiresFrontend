@@ -12,10 +12,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import CommonTitle from '@/components/CommonTitle.vue';
-import Page from '../models/Page';
-import ContentMarkdown from '@/components/ContentMarkdown.vue';
+
 import PagesDataService from '@/services/PagesDataService';
+
+import CommonTitle from '@/components/CommonTitle.vue';
+import Page from '@/models/Page';
+import ContentMarkdown from '@/components/ContentMarkdown.vue';
 
 export default defineComponent({
   name: 'PageMisc',

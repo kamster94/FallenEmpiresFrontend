@@ -15,8 +15,10 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import NavMenuItem from '@/components/NavMenuItem.vue';
+
 import Navigation from '@/models/Navigation';
+
+import NavMenuItem from '@/components/NavMenuItem.vue';
 
 export default defineComponent({
   name: 'NavMenu',

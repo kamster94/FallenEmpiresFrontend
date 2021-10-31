@@ -1,12 +1,12 @@
+import ApiClient from '@/plugins/ApiClient';
 import Heritage from '@/models/Heritage';
-import apiClient from '@/plugins/apiClient';
 
 const resource = '/heritages';
 
 export default {
   async get(): Promise<Heritage[]> {
     try {
-      return (await apiClient.get(`${resource}`)).data;
+      return (await ApiClient.get(`${resource}`)).data;
     } catch (error) {
       console.error(error);
       return [];
@@ -15,7 +15,7 @@ export default {
 
   async getByName(name: string): Promise<Heritage | null> {
     try {
-      return (await apiClient.get(`${resource}/${name}`)).data;
+      return (await ApiClient.get(`${resource}/${name}`)).data;
     } catch (error) {
       console.error(error);
       return null;

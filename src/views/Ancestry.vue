@@ -73,18 +73,21 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import CommonTitle from '@/components/CommonTitle.vue';
-import FeatBox from '@/components/FeatBox.vue';
-import HeritageBox from '@/components/HeritageBox.vue';
-import Ancestry from '@/models/Ancestry';
-import Feat from '@/models/Feat';
-import Heritage from '@/models/Heritage';
-import CommonSectionTitle from '@/components/CommonSectionTitle.vue';
-import ContentWithSidebar from '@/components/ContentWithSidebar.vue';
-import CommonTag from '@/components/CommonTag.vue';
+
 import AncestriesDataService from '@/services/AncestriesDataService';
 import HeritagesDataService from '@/services/HeritagesDataService';
 import FeatsDataService from '@/services/FeatsDataService';
+
+import Ancestry from '@/models/Ancestry';
+import Feat from '@/models/Feat';
+import Heritage from '@/models/Heritage';
+
+import CommonSectionTitle from '@/components/CommonSectionTitle.vue';
+import ContentWithSidebar from '@/components/ContentWithSidebar.vue';
+import CommonTag from '@/components/CommonTag.vue';
+import CommonTitle from '@/components/CommonTitle.vue';
+import FeatBox from '@/components/FeatBox.vue';
+import HeritageBox from '@/components/HeritageBox.vue';
 
 export default defineComponent({
   name: 'Ancestry',

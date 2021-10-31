@@ -25,8 +25,10 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import RuleBox from '@/components/RuleBox.vue';
+
 import Heritage from '@/models/Heritage';
+
+import RuleBox from '@/components/RuleBox.vue';
 
 export default defineComponent({
   name: 'HeritageBox',

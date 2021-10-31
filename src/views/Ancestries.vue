@@ -8,11 +8,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import TableWithRouter from '@/components/TableWithRouter.vue';
+
+import AncestriesDataService from '@/services/AncestriesDataService';
+
 import Table, { Cell, Row } from '@/models/Table';
 import Ancestry from '@/models/Ancestry';
 import Link from '@/models/Link';
-import AncestriesDataService from '@/services/AncestriesDataService';
+
+import TableWithRouter from '@/components/TableWithRouter.vue';
 
 export default defineComponent({
   name: 'Ancestries',

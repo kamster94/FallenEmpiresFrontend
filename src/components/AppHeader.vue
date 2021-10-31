@@ -75,10 +75,12 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
+
+import CommonDataService from '@/services/CommonDataService';
+import Navigation from '@/models/Navigation';
+
 import NavMenu from './NavMenu.vue';
 import NavMobileMenu from './NavMobileMenu.vue';
-import Navigation from '@/models/Navigation';
-import CommonDataService from '@/services/CommonDataService';
 
 export default defineComponent({
   components: {
