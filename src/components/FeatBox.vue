@@ -22,8 +22,10 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import RuleBox from '@/components/RuleBox.vue';
+
 import Feat from '@/models/Feat';
+
+import RuleBox from '@/components/RuleBox.vue';
 
 export default defineComponent({
   name: 'FeatBox',

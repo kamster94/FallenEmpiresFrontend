@@ -17,6 +17,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+
 import CommonLink from '@/components/CommonLink.vue';
 
 export default defineComponent({

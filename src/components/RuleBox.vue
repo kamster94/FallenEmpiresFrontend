@@ -25,6 +25,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+
 import CommonTag from './CommonTag.vue';
 
 export default defineComponent({

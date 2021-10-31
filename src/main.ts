@@ -1,8 +1,11 @@
 import { createApp } from 'vue';
-import App from './App.vue';
+
 import router from './router';
 import store from './store';
-import FontAwesomeIcon from '@/plugins/fontawesome-icons';
+import App from './App.vue';
+
+import FontAwesomeIcon from '@/plugins/FontAwesomeIcons';
+
 import './assets/tailwind.css';
 
 createApp(App)

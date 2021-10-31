@@ -12,9 +12,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+
+import PagesDataService from '@/services/PagesDataService';
+
+import Page from '@/models/Page';
+
 import CommonTitle from '@/components/CommonTitle.vue';
-import apiClient from '@/plugins/apiClient';
-import Page from '../models/Page';
 import ContentMarkdown from '@/components/ContentMarkdown.vue';
 
 export default defineComponent({
@@ -28,17 +31,15 @@ export default defineComponent({
       page: {} as Page
     };
   },
-  beforeMount() {
+  async beforeMount() {
     if (this.$route.params.name != null) {
-      const pageName = this.$route.params.name;
-      apiClient
-        .get(`/pages/setting/${pageName}`)
-        .then((response) => {
-          this.page = response.data;
-        })
-        .catch(() => {
-          this.$router.push({ path: '/404' });
-        });
+      const pageName = this.$route.params.name.toString();
+      const page = await PagesDataService.get('setting', pageName);
+      if (page != null) {
+        this.page = page;
+      } else {
+        this.$router.push({ path: '/404' });
+      }
     }
   }
 });

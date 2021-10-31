@@ -46,8 +46,10 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import { MenuButton, MenuItems, Menu } from '@headlessui/vue';
-import NavMenuItemSub from '@/components/NavMenuItemSub.vue';
+
 import Navigation from '@/models/Navigation';
+
+import NavMenuItemSub from '@/components/NavMenuItemSub.vue';
 
 export default defineComponent({
   name: 'NavMenuItem',

@@ -13,10 +13,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+
+import CommonDataService from '@/services/CommonDataService';
+
+import HomeBox from '@/models/HomeBox';
+
 import CommonBox from '@/components/CommonBox.vue';
 import CommonTitle from '@/components/CommonTitle.vue';
-import HomeBox from '@/models/HomeBox';
-import apiClient from '@/plugins/apiClient';
+
 export default defineComponent({
   name: 'Home',
   components: {
@@ -28,10 +32,8 @@ export default defineComponent({
       boxes: [] as HomeBox[]
     };
   },
-  beforeMount() {
-    apiClient.get(`/homeBoxes`).then((response) => {
-      this.boxes = response.data;
-    });
+  async beforeMount() {
+    this.boxes = await CommonDataService.getHomeBoxes();
   }
 });
 </script>

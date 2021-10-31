@@ -47,6 +47,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
+
 import Navigation from '@/models/Navigation';
 
 export default defineComponent({

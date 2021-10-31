@@ -13,8 +13,10 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import NavMobileMenuItem from '@/components/NavMobileMenuItem.vue';
+
 import Navigation from '@/models/Navigation';
+
+import NavMobileMenuItem from '@/components/NavMobileMenuItem.vue';
 
 export default defineComponent({
   name: 'NavMobileMenu',
