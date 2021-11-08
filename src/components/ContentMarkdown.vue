@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent } from 'vue';
 import marked from 'marked';
 import DOMPurify from 'dompurify';
 
@@ -15,14 +15,18 @@ export default defineComponent({
       required: false
     }
   },
-  computed: {
-    compiledMarkdown(): string | null {
-      if (this.content != null) {
-        return DOMPurify.sanitize(marked(this.content));
+  setup(props) {
+    const compiledMarkdown = computed(() => {
+      if (props.content != null) {
+        return DOMPurify.sanitize(marked(props.content));
       } else {
         return null;
       }
-    }
+    });
+
+    return {
+      compiledMarkdown
+    };
   }
 });
 </script>

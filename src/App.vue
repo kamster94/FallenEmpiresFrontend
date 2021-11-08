@@ -1,5 +1,7 @@
 <template>
-  <app-header />
+  <Suspense>
+    <app-header />
+  </Suspense>
   <div
     class="mx-auto px-4 my-8 p-8 content border-solid border-2 border-primary"
   >
