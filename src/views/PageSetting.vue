@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="page != null">
     <common-title>
       {{ page.name }}
       <template v-slot:headline>
@@ -12,13 +12,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-
-import PagesDataService from '@/services/PagesDataService';
-
-import Page from '@/models/Page';
+import { useRoute } from 'vue-router';
 
 import CommonTitle from '@/components/CommonTitle.vue';
 import ContentMarkdown from '@/components/ContentMarkdown.vue';
+
+import useDataPage from '@/composables/UseDataPage';
 
 export default defineComponent({
   name: 'PageSetting',
@@ -26,21 +25,15 @@ export default defineComponent({
     CommonTitle,
     ContentMarkdown
   },
-  data() {
+  async setup() {
+    const route = useRoute();
+    const pageName = route.params.name.toString();
+
+    const page = await useDataPage('setting', pageName);
+
     return {
-      page: {} as Page
+      page
     };
-  },
-  async beforeMount() {
-    if (this.$route.params.name != null) {
-      const pageName = this.$route.params.name.toString();
-      const page = await PagesDataService.get('setting', pageName);
-      if (page != null) {
-        this.page = page;
-      } else {
-        this.$router.push({ path: '/404' });
-      }
-    }
   }
 });
 </script>

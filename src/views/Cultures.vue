@@ -1,26 +1,27 @@
 <template>
-  <table-with-router title="Cultures" route="cultures" :table="cultures" />
+  <table-with-router title="Cultures" route="cultures" :table="dataTable" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 
-import Table from '@/models/Table';
-
 import TableWithRouter from '@/components/TableWithRouter.vue';
+
+import useDataTable from '@/composables/UseDataTable';
 
 export default defineComponent({
   name: 'Cultures',
   components: {
     TableWithRouter
   },
-  data() {
-    const cultures: Table = {
-      headers: ['Name', 'Ancestries'],
-      rows: []
-    };
+  async setup() {
+    const culturesData = Array<any>();
+    const headers = ['Name', 'Ancestries'];
+    const columns = Array<string>();
+    const { dataTable } = useDataTable(headers, culturesData, columns);
+
     return {
-      cultures
+      dataTable
     };
   }
 });
