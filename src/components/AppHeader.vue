@@ -77,7 +77,6 @@ import { defineComponent } from 'vue';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 
 import CommonDataService from '@/services/CommonDataService';
-import Navigation from '@/models/Navigation';
 
 import NavMenu from './NavMenu.vue';
 import NavMobileMenu from './NavMobileMenu.vue';
@@ -91,13 +90,12 @@ export default defineComponent({
     DisclosurePanel
   },
   name: 'AppHeader',
-  data() {
+  async setup() {
+    const menuItems = await CommonDataService.getMenu();
+
     return {
-      menuItems: [] as Navigation[]
+      menuItems
     };
-  },
-  async beforeMount() {
-    this.menuItems = await CommonDataService.getMenu();
   }
 });
 </script>

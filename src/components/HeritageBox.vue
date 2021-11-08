@@ -4,7 +4,7 @@
     :category="heritage.category"
     :tags="heritage.tags"
   >
-    <template v-slot:header v-if="hasHeader()">
+    <template v-slot:header v-if="hasHeader">
       <div v-if="heritage.prerequisites != null">
         <b>Hit Points</b> {{ heritage.prerequisites }}
       </div>
@@ -39,16 +39,20 @@ export default defineComponent({
       required: true
     }
   },
-  methods: {
-    hasHeader(): boolean {
+  setup(props) {
+    const hasHeader = () => {
       if (
-        this.heritage.hitPoints != null ||
-        this.heritage.abilityBoost != null
+        props.heritage.hitPoints != null ||
+        props.heritage.abilityBoost != null
       ) {
         return true;
       }
       return false;
-    }
+    };
+
+    return {
+      hasHeader
+    };
   }
 });
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="text-left">
-    <common-title>{{ ancestry.name }}</common-title>
+    <common-title>{{ ancestry.name.label }}</common-title>
     <content-with-sidebar>
       <template v-slot:content>
         {{ ancestry.description }}
@@ -29,10 +29,7 @@
 
           <h3>Traits</h3>
           <p class="mb-4">
-            <common-tag
-              v-for="trait in ancestry.traits"
-              v-bind:key="trait.index"
-            >
+            <common-tag v-for="trait in ancestry.tags" v-bind:key="trait.index">
               {{ trait }}
             </common-tag>
           </p>
@@ -40,7 +37,7 @@
           <h3>Cultures</h3>
           <ul class="mb-4">
             <li v-for="culture in ancestry.cultures" v-bind:key="culture.index">
-              {{ culture }}
+              <common-link :label="culture.label" :route="culture.route" />
             </li>
           </ul>
 
@@ -73,14 +70,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { useRoute } from 'vue-router';
+import router from '@/router';
 
 import AncestriesDataService from '@/services/AncestriesDataService';
 import HeritagesDataService from '@/services/HeritagesDataService';
 import FeatsDataService from '@/services/FeatsDataService';
-
-import Ancestry from '@/models/Ancestry';
-import Feat from '@/models/Feat';
-import Heritage from '@/models/Heritage';
 
 import CommonSectionTitle from '@/components/CommonSectionTitle.vue';
 import ContentWithSidebar from '@/components/ContentWithSidebar.vue';
@@ -88,6 +83,7 @@ import CommonTag from '@/components/CommonTag.vue';
 import CommonTitle from '@/components/CommonTitle.vue';
 import FeatBox from '@/components/FeatBox.vue';
 import HeritageBox from '@/components/HeritageBox.vue';
+import CommonLink from '@/components/CommonLink.vue';
 
 export default defineComponent({
   name: 'Ancestry',
@@ -97,25 +93,23 @@ export default defineComponent({
     HeritageBox,
     CommonSectionTitle,
     ContentWithSidebar,
-    CommonTag
+    CommonTag,
+    CommonLink
   },
-  data() {
-    return {
-      feats: [] as Feat[],
-      heritages: [] as Heritage[],
-      ancestry: {} as Ancestry
-    };
-  },
-  async beforeMount() {
-    const ancestryName = this.$route.params.name.toString();
+  async setup() {
+    const route = useRoute();
+    const ancestryName = route.params.name.toString();
     const ancestry = await AncestriesDataService.getByName(ancestryName);
-    if (ancestry != null) {
-      this.ancestry = ancestry;
-    } else {
-      this.$router.push({ path: '/404' });
+    if (ancestry == null) {
+      router.push({ path: '/404' });
     }
-    this.feats = await FeatsDataService.get();
-    this.heritages = await HeritagesDataService.get();
+    const feats = await FeatsDataService.get();
+    const heritages = await HeritagesDataService.get();
+    return {
+      feats,
+      heritages,
+      ancestry
+    };
   }
 });
 </script>

@@ -16,8 +16,6 @@ import { defineComponent } from 'vue';
 
 import CommonDataService from '@/services/CommonDataService';
 
-import HomeBox from '@/models/HomeBox';
-
 import CommonBox from '@/components/CommonBox.vue';
 import CommonTitle from '@/components/CommonTitle.vue';
 
@@ -27,13 +25,12 @@ export default defineComponent({
     CommonBox,
     CommonTitle
   },
-  data() {
+  async setup() {
+    const boxes = await CommonDataService.getHomeBoxes();
+
     return {
-      boxes: [] as HomeBox[]
+      boxes
     };
-  },
-  async beforeMount() {
-    this.boxes = await CommonDataService.getHomeBoxes();
   }
 });
 </script>

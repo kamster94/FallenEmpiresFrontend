@@ -2,29 +2,30 @@
   <table-with-router
     title="Backgrounds"
     route="backgrounds"
-    :table="backgrounds"
+    :table="dataTable"
   />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 
-import Table from '@/models/Table';
-
 import TableWithRouter from '@/components/TableWithRouter.vue';
+
+import useDataTable from '@/composables/UseDataTable';
 
 export default defineComponent({
   name: 'Backgrounds',
   components: {
     TableWithRouter
   },
-  data() {
-    const backgrounds: Table = {
-      headers: ['Name', 'Ability Boosts', 'Skill', 'Lore', 'Feat'],
-      rows: []
-    };
+  async setup() {
+    const backgroundsData = Array<any>();
+    const headers = ['Name', 'Ability Boosts', 'Skill', 'Lore', 'Feat'];
+    const columns = Array<string>();
+    const { dataTable } = useDataTable(headers, backgroundsData, columns);
+
     return {
-      backgrounds
+      dataTable
     };
   }
 });

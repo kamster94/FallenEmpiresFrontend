@@ -1,6 +1,6 @@
 <template>
   <rule-box :title="feat.title" :category="feat.category" :tags="feat.tags">
-    <template v-slot:header v-if="hasHeader()">
+    <template v-slot:header v-if="hasHeader">
       <div v-if="feat.prerequisites != null">
         <b>Prerequisites</b> {{ feat.prerequisites }}
       </div>
@@ -36,17 +36,21 @@ export default defineComponent({
       required: true
     }
   },
-  methods: {
-    hasHeader(): boolean {
+  setup(props) {
+    const hasHeader = () => {
       if (
-        this.feat.prerequisites != null ||
-        this.feat.frequency != null ||
-        this.feat.trigger != null
+        props.feat.prerequisites != null ||
+        props.feat.frequency != null ||
+        props.feat.trigger != null
       ) {
         return true;
       }
       return false;
-    }
+    };
+
+    return {
+      hasHeader
+    };
   }
 });
 </script>
