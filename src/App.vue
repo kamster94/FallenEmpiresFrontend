@@ -3,7 +3,9 @@
   <div
     class="mx-auto px-4 my-8 p-8 content border-solid border-2 border-primary"
   >
-    <router-view />
+    <Suspense>
+      <router-view />
+    </Suspense>
   </div>
   <app-footer />
 </template>

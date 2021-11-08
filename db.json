@@ -118,15 +118,15 @@
   "ancestries": [
     {
       "id": "human",
-      "name": "Human",
+      "name": { "label": "Human", "route": "/rules/ancestries/human" },
       "rarity": "Common",
       "hitPoints": "8",
       "size": "Medium",
       "speed": "25 feet",
       "abilityBoost": "Free",
       "languages": "You know 2 languages common to your culture or prevalent in your region (usually Common and the language of your ancestry). If your Intelligence modifier is positive, you know additional languages equal to its value. Additional languages should also be common to you.",
-      "traits": ["Humanoid", "Human"],
-      "cultures": ["Valdorczycy"],
+      "tags": ["Humanoid", "Human"],
+      "cultures": [ { "label": "Valdorczycy", "route": "" } ],
       "startingAncestryFeats": [
         "No Heritage: 6",
         "With Heritage (0): 6",
@@ -138,23 +138,23 @@
     },
     {
       "id": "dwarf",
-      "name": "Dwarf",
+      "name": { "label": "Dwarf", "route": "/rules/ancestries/dwarf" },
       "hitPoints": "10",
       "size": "Medium",
       "speed": "20 feet",
       "abilityBoost": "Constitution or Intelligence",
-      "traits": ["Humanoid", "Dwarf"],
-      "cultures": ["Ogniste Krasnoludy"]
+      "tags": ["Humanoid", "Dwarf"],
+      "cultures": [ { "label": "Ogniste Krasnoludy", "route": "" } ]
     },
     {
       "id": "elf",
-      "name": "Elf",
+      "name": { "label": "Elf", "route": "/rules/ancestries/elf" },
       "hitPoints": "6",
       "size": "Medium",
       "speed": "30 feet",
       "abilityBoost": "Dexterity or Wisdom",
-      "traits": ["Humanoid", "Elf"],
-      "cultures": ["Dzikie Elfy"]
+      "tags": ["Humanoid", "Elf"],
+      "cultures": [ { "label": "Dzikie Elfy", "route": "" } ]
     }
   ],
   "rules-pages": [

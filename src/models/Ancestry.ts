@@ -1,5 +1,7 @@
+import Link from './Link';
+
 export default interface Ancestry {
-  name: string;
+  name: Link;
   rarity: string;
   hitPoints: string;
   size: string;
@@ -7,7 +9,7 @@ export default interface Ancestry {
   abilityBoost: string;
   languages: string;
   traits?: string[];
-  cultures?: string[];
+  cultures?: Link[];
   startingAncestryFeats?: string[];
   description: string;
 }
