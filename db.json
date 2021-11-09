@@ -173,5 +173,21 @@
       "text": ""
     }
   ],
-  "misc-pages": []
+  "misc-pages": [],
+  "blog": [
+    {
+      "id": 1,
+      "title": "First post",
+      "author": "Kamster",
+      "date": "2021-11-09",
+      "content": "<p>This is the first post, serving only as a placeholder for the time of development.</p><p>That's second paragraph of this post.</p>"
+    },
+    {
+      "id": 2,
+      "title": "Age of Fallen Empires",
+      "author": "Sigi",
+      "date": "2021-11-09",
+      "content": "Hello, welcome to our website dedicated to Fallen Empires project - our own, original setting for Pathfinder 2e"
+    }
+  ]
 }
