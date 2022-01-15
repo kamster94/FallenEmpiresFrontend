@@ -20,7 +20,7 @@
     "core-js": "^3.6.5",
     "dompurify": "^2.3.3",
     "json-server": "^0.17.0",
-    "marked": "^3.0.7",
+    "marked": "^4.0.10",
     "postcss": "^7",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
     "vue": "^3.0.0",
